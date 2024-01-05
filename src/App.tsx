@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 // import AddAdvertisement from "./components/addAdvertisement/AddAdvertisement";
 import Map from "./components/map/Map";
-import { Location } from "./types/interfaces";
+import { Apartment } from "./types/interfaces";
 import "leaflet/dist/leaflet.css";
+import { apartmentList } from "./mock/apartments";
+import ApartmentCard from "./components/apartmentCard/ApartmentCard";
+import styles from "./App.module.scss";
 
 const exampleLocations = [
   {
@@ -20,10 +23,18 @@ const exampleLocations = [
 ];
 
 const App: React.FC = () => {
-  const [locations, setLocations] = useState<Location[]>(exampleLocations);
+  const [apartments, setApartments] = useState<Apartment[]>(apartmentList);
+  const [selectedApartment, setSelectedApartment] = useState<Apartment | null>(
+    null
+  );
 
-  const handleMarkerClick = (location: Location) => {
-    console.log("Marker clicked:", location);
+  const handleMarkerClick = (apartment: Apartment) => {
+    console.log("Marker clicked:", apartment);
+    setSelectedApartment(apartment);
+  };
+
+  const handleMapClick = () => {
+    setSelectedApartment(null);
   };
 
   // const handleAdvertisementAdded = (newAdvertisement: Location) => {
@@ -31,9 +42,25 @@ const App: React.FC = () => {
   // };
 
   return (
-    <div>
-      <Map locations={locations} handleMarkerClick={handleMarkerClick} />
+    <div className={styles.pageContainer}>
+      <Map
+        apartments={apartments}
+        handleMarkerClick={handleMarkerClick}
+        handleMapClick={handleMapClick}
+      />
       {/* <AddAdvertisement onAdvertisementAdded={handleAdvertisementAdded} /> */}
+      <div style={{ marginLeft: "10px", width: "300px" }}>
+        {selectedApartment && (
+          <ApartmentCard
+            title={selectedApartment.title}
+            description={selectedApartment.description}
+            type={selectedApartment.type}
+            address={selectedApartment.address}
+            image={selectedApartment.image}
+            price={selectedApartment.price}
+          />
+        )}
+      </div>
     </div>
   );
 };
