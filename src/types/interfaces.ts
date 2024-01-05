@@ -4,3 +4,15 @@ export interface Location {
   latitude: number;
   longitude: number;
 }
+
+export interface Apartment {
+  id: number;
+  title: string;
+  type: string;
+  address: string;
+  image: string;
+  price: number;
+  description: string;
+  lat: number;
+  lon: number;
+}
