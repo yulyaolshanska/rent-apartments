@@ -16,3 +16,7 @@ export interface Apartment {
   lat: number;
   lon: number;
 }
+
+export interface IinitialState {
+  apartments: Apartment[];
+}
