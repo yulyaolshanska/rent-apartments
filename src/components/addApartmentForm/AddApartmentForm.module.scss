@@ -1,0 +1,61 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #797779;
+  font-size: 16px;
+  line-height: 1.4;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #b1b0b1;
+  background: #fffbf3;
+  color: #525152;
+  font-size: 16px;
+  line-height: 1.4;
+
+  @media screen and (min-width: 768px) {
+    padding: 10px 18px;
+    font-size: 18px;
+  }
+
+  &.errorInput {
+    color: rgb(211, 60, 60);
+  }
+}
+
+.errorMessage {
+  color: rgb(211, 60, 60);
+  font-size: 12px;
+  line-height: 1.4;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 248px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  color: rgb(31, 22, 22);
+  background: rgb(122, 166, 122);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+}
