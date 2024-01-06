@@ -28,26 +28,31 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <Map
-        apartments={apartments}
-        handleMarkerClick={handleMarkerClick}
-        handleMapClick={handleMapClick}
-      />
-      {selectedApartment ? (
-        <ApartmentCard
-          title={selectedApartment.title}
-          description={selectedApartment.description}
-          type={selectedApartment.type}
-          address={selectedApartment.address}
-          image={selectedApartment.image}
-          price={selectedApartment.price}
-        />
-      ) : (
-        <ApartmentList apartments={visibleApartments} />
-      )}
-      <AddApartmentForm />
-    </div>
+    <>
+      <header></header>
+      <main>
+        <div className={styles.pageContainer}>
+          <Map
+            apartments={apartments}
+            handleMarkerClick={handleMarkerClick}
+            handleMapClick={handleMapClick}
+          />
+          {selectedApartment ? (
+            <ApartmentCard
+              title={selectedApartment.title}
+              description={selectedApartment.description}
+              type={selectedApartment.type}
+              address={selectedApartment.address}
+              image={selectedApartment.image}
+              price={selectedApartment.price}
+            />
+          ) : (
+            <ApartmentList apartments={visibleApartments} />
+          )}
+          <AddApartmentForm />
+        </div>
+      </main>
+    </>
   );
 };
 
