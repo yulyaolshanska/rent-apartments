@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import MapModal from "../mapModal/MapModal";
 import styles from "./AddApartmentForm.module.scss";
 
 interface FormData {
@@ -8,6 +10,8 @@ interface FormData {
   type: string;
   address: string;
   price: number;
+  lat: number;
+  lng: number;
 }
 
 const AddApartmentForm: React.FC = () => {
@@ -19,9 +23,27 @@ const AddApartmentForm: React.FC = () => {
     mode: "onChange",
     shouldUnregister: true,
   });
+  const [isMapModalOpen, setMapModalOpen] = useState<boolean>(false);
+  const [selectedLat, setSelectedLat] = useState<number>(0);
+  const [selectedLng, setSelectedLng] = useState<number>(0);
 
   const handleAddApartment = async (formData: FormData) => {
+    formData.lat = selectedLat;
+    formData.lng = selectedLng;
     console.log("formData", formData);
+  };
+
+  const handleAddressClick = () => {
+    setMapModalOpen(true);
+  };
+
+  const handleMapClose = () => {
+    setMapModalOpen(false);
+  };
+
+  const handleSelectLocation = (lat: number, lng: number) => {
+    setSelectedLat(lat);
+    setSelectedLng(lng);
   };
 
   return (
@@ -62,32 +84,6 @@ const AddApartmentForm: React.FC = () => {
               />
               {errors.title && touchedFields.title && (
                 <p className={styles.errorMessage}>{errors.title?.message}</p>
-              )}
-            </li>
-            <li className={styles.inputContainer}>
-              <label className={styles.label} htmlFor="description">
-                Опис
-              </label>
-              <textarea
-                className={`${styles.input} ${
-                  errors.description && touchedFields.description
-                    ? styles.errorInput
-                    : ""
-                }`}
-                {...register("description", {
-                  maxLength: {
-                    value: 300,
-                    message: "Це поле не може перевищувати 300 символів.",
-                  },
-                })}
-                id="description"
-                name="description"
-                aria-invalid={errors.description ? "true" : "false"}
-              />
-              {errors.description && touchedFields.description && (
-                <p className={styles.errorMessage}>
-                  {errors.description?.message}
-                </p>
               )}
             </li>
             <li className={styles.inputContainer}>
@@ -172,6 +168,9 @@ const AddApartmentForm: React.FC = () => {
                 <p className={styles.errorMessage}>{errors.address?.message}</p>
               )}
             </li>
+            <li>
+              <button onClick={handleAddressClick}>Вказати на мапі</button>
+            </li>
             <li className={styles.inputContainer}>
               <label className={styles.label} htmlFor="price">
                 Ціна
@@ -199,12 +198,43 @@ const AddApartmentForm: React.FC = () => {
                 <p className={styles.errorMessage}>{errors.price?.message}</p>
               )}
             </li>
+            <li className={styles.inputContainer}>
+              <label className={styles.label} htmlFor="description">
+                Опис
+              </label>
+              <textarea
+                className={`${styles.input} ${
+                  errors.description && touchedFields.description
+                    ? styles.errorInput
+                    : ""
+                }`}
+                {...register("description", {
+                  maxLength: {
+                    value: 300,
+                    message: "Це поле не може перевищувати 300 символів.",
+                  },
+                })}
+                id="description"
+                name="description"
+                aria-invalid={errors.description ? "true" : "false"}
+              />
+              {errors.description && touchedFields.description && (
+                <p className={styles.errorMessage}>
+                  {errors.description?.message}
+                </p>
+              )}
+            </li>
           </ul>
           <button className={styles.button} type={"submit"} disabled={!isValid}>
             Додати
           </button>
         </form>
       </div>
+      <MapModal
+        isOpen={isMapModalOpen}
+        onClose={handleMapClose}
+        onSelectLocation={handleSelectLocation}
+      />
     </>
   );
 };

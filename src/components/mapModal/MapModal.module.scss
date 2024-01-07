@@ -1,0 +1,7 @@
+.mapContainer {
+  display: none;
+
+  &.showContainer {
+    display: block;
+  }
+}
