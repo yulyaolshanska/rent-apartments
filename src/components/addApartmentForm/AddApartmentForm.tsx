@@ -31,7 +31,7 @@ const AddApartmentForm: React.FC = () => {
   const handleAddApartment = async (formData: FormData) => {
     setValue("image", "");
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://rent-apartments-backend.vercel.app/api/apartments/add",
         formData
       );
