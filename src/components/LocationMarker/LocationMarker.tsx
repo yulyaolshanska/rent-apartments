@@ -19,7 +19,7 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({
 
   useEffect(() => {
     dispatch(apartmentsChanged(visibleApartments));
-  }, [visibleApartments]);
+  }, [visibleApartments, dispatch]);
 
   useMapEvents({
     click: (e) => {
