@@ -29,15 +29,12 @@ const AddApartmentForm: React.FC = () => {
   const [isMapModalOpen, setMapModalOpen] = useState<boolean>(false);
 
   const handleAddApartment = async (formData: FormData) => {
-    console.log("formData", formData);
+    setValue("image", "");
     try {
       const response = await axios.post(
-        // "https://rent-apartments.onrender.com/api/apartments/add",
         "https://rent-apartments-backend.vercel.app/api/apartments/add",
-        // "http://localhost:5001/api/apartments/add",
         formData
       );
-      console.log("Apartment added:", response.data);
     } catch (error) {
       console.error("Error adding apartment:", error);
     }

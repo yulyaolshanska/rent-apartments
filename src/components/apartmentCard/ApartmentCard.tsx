@@ -1,3 +1,5 @@
+import defaultImage from "../../images/defaultApartment.jpeg";
+
 interface ApartmentCardProps {
   type: string;
   address: string;
@@ -15,10 +17,11 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
   address,
   price,
 }) => {
+
   return (
     <div>
       <h2>{title}</h2>
-      <img src={image} alt={title} width={300} />
+      <img src={image || defaultImage} alt={title} width={300} />
       <p>Type: {type}</p>
       <p>Address: {address}</p>
       <p>Price: {price}</p>
