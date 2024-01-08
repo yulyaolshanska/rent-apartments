@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import markerIcon from "../../constants/markerIcon";
 import MapMarker from "../marker/MapMarker";
 import styles from "./MapModal.module.scss";
+import Button from "../button/Button";
 
 interface MapModalProps {
   isOpen: boolean;
@@ -33,9 +34,11 @@ const MapModal: React.FC<MapModalProps> = ({
   };
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
     return (): void => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "scroll";
     };
   }, [isOpen]);
 
@@ -62,7 +65,9 @@ const MapModal: React.FC<MapModalProps> = ({
           </Marker>
           <MapMarker handleMapClick={handleMapClick} />
         </MapContainer>
-        <button onClick={onClose}>Зберегти розташування</button>
+        <Button variant="modalBtn" onClick={onClose}>
+          Зберегти розташування
+        </Button>
       </div>
     </div>
   );

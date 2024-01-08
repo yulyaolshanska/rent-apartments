@@ -1,0 +1,65 @@
+.button {
+  width: 248px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background: #4242c9;
+  border: 2px solid #4242c9;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    color: #4242c9;
+    background: transparent;
+  }
+
+  &.headerBtn {
+    margin-left: auto;
+    padding: 0;
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 7px 20px;
+
+    @media screen and (min-width: 768px) {
+      width: 180px;
+      padding: 7.5px 20px;
+      min-height: 44px;
+      font-size: 18px;
+    }
+  }
+
+  &.formBtn {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 130px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  &.modalBtn {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0;
+
+    @media screen and (min-width: 768px) {
+      width: 344px;
+      padding: 9px;
+      font-size: 18px;
+    }
+  }
+
+  &.unActive {
+    cursor: auto;
+    background-color: rgb(139, 139, 245);
+  }
+}
