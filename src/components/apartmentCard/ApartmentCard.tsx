@@ -1,4 +1,5 @@
 import defaultImage from "../../images/defaultApartment.jpeg";
+import styles from "./ApartmentCard.module.scss";
 
 interface ApartmentCardProps {
   type: string;
@@ -17,16 +18,17 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
   address,
   price,
 }) => {
-
   return (
-    <div>
-      <h2>{title}</h2>
+    <li className={styles.card}>
+      <h2 className={styles.title}>{title}</h2>
       <img src={image || defaultImage} alt={title} width={300} />
-      <p>Type: {type}</p>
-      <p>Address: {address}</p>
-      <p>Price: {price}</p>
-      <p>Details: {description}</p>
-    </div>
+      <div className={styles.textContainer}>
+        <p>Type: {type}</p>
+        <p>Address: {address}</p>
+        <p>Price: {price}</p>
+        <p>Details: {description}</p>
+      </div>
+    </li>
   );
 };
 

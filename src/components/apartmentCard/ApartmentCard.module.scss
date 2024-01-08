@@ -1,0 +1,27 @@
+.card {
+  height: 600px;
+  box-shadow: 0px 4px 8px 0px rgba(69, 67, 67, 0.08);
+  border-radius: 5px 5px;
+
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  @media (min-width: 524px) {
+    max-width: 492px;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
