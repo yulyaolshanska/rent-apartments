@@ -5,12 +5,12 @@ import { Apartment } from "../../types/interfaces";
 import { useAppDispatch } from "../../redux/store/store";
 import { apartmentsChanged } from "../../redux/slices/apartmentSlice";
 
-interface ApartmentsProps {
+interface LocationMarkerProps {
   apartments?: Apartment[];
   handleMapClick: (e: L.LeafletMouseEvent) => void;
 }
 
-const LocationMarker: React.FC<ApartmentsProps> = ({
+const LocationMarker: React.FC<LocationMarkerProps> = ({
   apartments,
   handleMapClick,
 }) => {

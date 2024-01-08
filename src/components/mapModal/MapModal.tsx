@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import LocationMarker from "../LocationMarker/LocationMarker";
 import "leaflet/dist/leaflet.css";
 import markerIcon from "../../constants/markerIcon";
+import MapMarker from "../marker/MapMarker";
 import styles from "./MapModal.module.scss";
 
 interface MapModalProps {
@@ -43,7 +43,7 @@ const MapModal: React.FC<MapModalProps> = ({
         <Marker icon={markerIcon} position={mapCenter}>
           <Popup>Your selected location</Popup>
         </Marker>
-        <LocationMarker handleMapClick={handleMapClick} />
+        <MapMarker handleMapClick={handleMapClick} />
       </MapContainer>
     </div>
   );
