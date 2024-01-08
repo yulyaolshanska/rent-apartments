@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import MapModal from "../mapModal/MapModal";
 import styles from "./AddApartmentForm.module.scss";
@@ -27,6 +28,7 @@ const AddApartmentForm: React.FC = () => {
     shouldUnregister: true,
   });
   const [isMapModalOpen, setMapModalOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleAddApartment = async (formData: FormData) => {
     setValue("image", "");
@@ -35,6 +37,7 @@ const AddApartmentForm: React.FC = () => {
         "https://rent-apartments-backend.vercel.app/api/apartments/add",
         formData
       );
+      navigate("/");
     } catch (error) {
       console.error("Error adding apartment:", error);
     }
