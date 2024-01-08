@@ -1,3 +1,29 @@
+.formContainer {
+  width: 100%;
+  padding: 20px 16px 40px 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 376px) {
+    width: 580px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 650px;
+    padding: 20px 50px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 900px;
+  }
+}
+
+.formTitle {
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -43,12 +69,12 @@
   }
 }
 
-.button {
+.mapButton {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  width: 248px;
-  padding: 10px 20px;
+  width: 150px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
   color: rgb(31, 22, 22);
@@ -58,4 +84,15 @@
   line-height: 1.25;
   text-align: center;
   cursor: pointer;
+}
+
+.locationText {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 18px;
+
+  &.errorLocationText {
+    font-weight: 800;
+    color: rgb(211, 60, 60);
+  }
 }

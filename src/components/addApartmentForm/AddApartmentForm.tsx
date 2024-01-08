@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Button from "../button/Button";
 import MapModal from "../mapModal/MapModal";
 import styles from "./AddApartmentForm.module.scss";
 
@@ -28,6 +30,17 @@ const AddApartmentForm: React.FC = () => {
 
   const handleAddApartment = async (formData: FormData) => {
     console.log("formData", formData);
+    try {
+      const response = await axios.post(
+        // "https://rent-apartments.onrender.com/api/apartments/add",
+        "https://rent-apartments-backend.vercel.app/api/apartments/add",
+        // "http://localhost:5001/api/apartments/add",
+        formData
+      );
+      console.log("Apartment added:", response.data);
+    } catch (error) {
+      console.error("Error adding apartment:", error);
+    }
   };
 
   const handleAddressClick = () => {
@@ -46,7 +59,7 @@ const AddApartmentForm: React.FC = () => {
   return (
     <>
       <div className={styles.formContainer} id="useApartmentForm">
-        <h2 className={styles.formTitle}>Add Apartment Form</h2>
+        <h2 className={styles.formTitle}>Форма додання оголошення</h2>
         <form
           className={styles.form}
           onSubmit={handleSubmit(handleAddApartment)}
@@ -70,8 +83,8 @@ const AddApartmentForm: React.FC = () => {
                     message: "Це поле має бути довшим за 2 символи.",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "Це поле не може перевищувати 30 символів.",
+                    value: 50,
+                    message: "Це поле не може перевищувати 50 символів.",
                   },
                 })}
                 type="text"
@@ -81,24 +94,6 @@ const AddApartmentForm: React.FC = () => {
               />
               {errors.title && touchedFields.title && (
                 <p className={styles.errorMessage}>{errors.title?.message}</p>
-              )}
-            </li>
-            <li className={styles.inputContainer}>
-              <label className={styles.label} htmlFor="image">
-                Фото
-              </label>
-              <input
-                className={`${styles.input} ${
-                  errors.image && touchedFields.image ? styles.errorInput : ""
-                }`}
-                {...register("image", {})}
-                type="file"
-                id="image"
-                name="image"
-                aria-invalid={errors.image ? "true" : "false"}
-              />
-              {errors.image && touchedFields.image && (
-                <p className={styles.errorMessage}>{errors.image?.message}</p>
               )}
             </li>
             <li className={styles.inputContainer}>
@@ -119,8 +114,8 @@ const AddApartmentForm: React.FC = () => {
                     message: "Це поле має бути довшим за 2 символи.",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "Це поле не може перевищувати 30 символів.",
+                    value: 40,
+                    message: "Це поле не може перевищувати 40 символів.",
                   },
                 })}
                 type="text"
@@ -152,8 +147,8 @@ const AddApartmentForm: React.FC = () => {
                     message: "Це поле має бути довшим за 2 символи.",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "Це поле не може перевищувати 30 символів.",
+                    value: 70,
+                    message: "Це поле не може перевищувати 70 символів.",
                   },
                 })}
                 type="text"
@@ -186,11 +181,16 @@ const AddApartmentForm: React.FC = () => {
                   },
                 })}
               />
-              {errors.lat && errors.lng && (
-                <p className={styles.errorMessage}>{errors.lat?.message}</p>
-              )}
-
-              <button onClick={handleAddressClick}>Вказати на мапі</button>
+              <p
+                className={`${styles.locationText} ${
+                  errors.lat ? styles.errorLocationText : ""
+                }`}
+              >
+                Обовʼязково вкажіть розташування житла на мапі!
+              </p>
+              <button className={styles.mapButton} onClick={handleAddressClick}>
+                Вказати на мапі
+              </button>
             </li>
 
             <li className={styles.inputContainer}>
@@ -221,6 +221,24 @@ const AddApartmentForm: React.FC = () => {
               )}
             </li>
             <li className={styles.inputContainer}>
+              <label className={styles.label} htmlFor="image">
+                Фото
+              </label>
+              <input
+                className={`${styles.input} ${
+                  errors.image && touchedFields.image ? styles.errorInput : ""
+                }`}
+                {...register("image", {})}
+                type="file"
+                id="image"
+                name="image"
+                aria-invalid={errors.image ? "true" : "false"}
+              />
+              {errors.image && touchedFields.image && (
+                <p className={styles.errorMessage}>{errors.image?.message}</p>
+              )}
+            </li>
+            <li className={styles.inputContainer}>
               <label className={styles.label} htmlFor="description">
                 Опис
               </label>
@@ -232,13 +250,14 @@ const AddApartmentForm: React.FC = () => {
                 }`}
                 {...register("description", {
                   maxLength: {
-                    value: 300,
-                    message: "Це поле не може перевищувати 300 символів.",
+                    value: 900,
+                    message: "Це поле не може перевищувати 900 символів.",
                   },
                 })}
                 id="description"
                 name="description"
                 aria-invalid={errors.description ? "true" : "false"}
+                rows={7}
               />
               {errors.description && touchedFields.description && (
                 <p className={styles.errorMessage}>
@@ -247,9 +266,9 @@ const AddApartmentForm: React.FC = () => {
               )}
             </li>
           </ul>
-          <button className={styles.button} type={"submit"}>
+          <Button variant="formBtn" type={"submit"}>
             Додати
-          </button>
+          </Button>
         </form>
       </div>
       <MapModal
