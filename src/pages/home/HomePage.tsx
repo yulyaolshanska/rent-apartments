@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/apartments"
+          "https://rent-apartments-backend.vercel.app/api/apartments"
         );
         console.log("Apartments:", response.data);
         setApartments(response.data);

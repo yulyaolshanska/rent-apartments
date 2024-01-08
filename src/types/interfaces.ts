@@ -6,7 +6,7 @@ export interface Location {
 }
 
 export interface Apartment {
-  id: number;
+  _id: number;
   title: string;
   type: string;
   address: string;
