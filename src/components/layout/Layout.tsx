@@ -6,9 +6,7 @@ import Loader from "../loader/Loader";
 const SharedLayout = () => {
   return (
     <Suspense fallback={<Loader />}>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main>
         <Outlet />
       </main>

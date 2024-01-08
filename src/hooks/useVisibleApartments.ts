@@ -11,7 +11,7 @@ const useVisibleApartments = (apartments: Apartment[]) => {
       const bounds = map.getBounds();
       const newVisibleApartments = apartments.filter(
         (apartment) =>
-          bounds.contains([apartment.lat, apartment.lon]) &&
+          bounds.contains([apartment.lat, apartment.lng]) &&
           apartment.description.trim() !== ""
       );
       setVisibleApartments(newVisibleApartments);

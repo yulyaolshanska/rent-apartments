@@ -32,7 +32,7 @@ const Map: React.FC<MapProps> = ({
           <Marker
             icon={markerIcon}
             key={apartment._id}
-            position={[apartment.lat, apartment.lon]}
+            position={[apartment.lat, apartment.lng]}
             eventHandlers={{
               click: () => handleMarkerClick(apartment),
             }}
