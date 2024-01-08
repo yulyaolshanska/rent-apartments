@@ -6,7 +6,7 @@ export interface Location {
 }
 
 export interface Apartment {
-  _id: number;
+  _id?: number;
   title: string;
   type: string;
   address: string;
@@ -14,7 +14,7 @@ export interface Apartment {
   price: number;
   description: string;
   lat: number;
-  lon: number;
+  lng: number;
 }
 
 export interface IinitialState {
