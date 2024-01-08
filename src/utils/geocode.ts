@@ -3,9 +3,10 @@ export const geocode = async (
 ): Promise<[number, number] | null> => {
   try {
     const response = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-        address
-      )}&key=YOUR_GOOGLE_MAPS_API_KEY`
+      ""
+      // `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+      //   address
+      // )}&key=YOUR_GOOGLE_MAPS_API_KEY`
     );
 
     const data = await response.json();
