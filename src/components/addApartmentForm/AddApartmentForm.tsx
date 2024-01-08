@@ -18,18 +18,15 @@ const AddApartmentForm: React.FC = () => {
   const {
     handleSubmit,
     register,
-    formState: { isValid, errors, touchedFields },
+    setValue,
+    formState: { errors, touchedFields },
   } = useForm<FormData>({
     mode: "onChange",
     shouldUnregister: true,
   });
   const [isMapModalOpen, setMapModalOpen] = useState<boolean>(false);
-  const [selectedLat, setSelectedLat] = useState<number>(0);
-  const [selectedLng, setSelectedLng] = useState<number>(0);
 
   const handleAddApartment = async (formData: FormData) => {
-    formData.lat = selectedLat;
-    formData.lng = selectedLng;
     console.log("formData", formData);
   };
 
@@ -42,8 +39,8 @@ const AddApartmentForm: React.FC = () => {
   };
 
   const handleSelectLocation = (lat: number, lng: number) => {
-    setSelectedLat(lat);
-    setSelectedLng(lng);
+    setValue("lat", lat);
+    setValue("lng", lng);
   };
 
   return (
@@ -169,8 +166,33 @@ const AddApartmentForm: React.FC = () => {
               )}
             </li>
             <li>
+              <input
+                type="hidden"
+                aria-invalid={errors.lat ? "true" : "false"}
+                {...register("lat", {
+                  required: {
+                    value: true,
+                    message: "Це поле обов`язкове до заповнення",
+                  },
+                })}
+              />
+              <input
+                type="hidden"
+                aria-invalid={errors.lng ? "true" : "false"}
+                {...register("lng", {
+                  required: {
+                    value: true,
+                    message: "Це поле обов`язкове до заповнення",
+                  },
+                })}
+              />
+              {errors.lat && errors.lng && (
+                <p className={styles.errorMessage}>{errors.lat?.message}</p>
+              )}
+
               <button onClick={handleAddressClick}>Вказати на мапі</button>
             </li>
+
             <li className={styles.inputContainer}>
               <label className={styles.label} htmlFor="price">
                 Ціна
@@ -225,7 +247,7 @@ const AddApartmentForm: React.FC = () => {
               )}
             </li>
           </ul>
-          <button className={styles.button} type={"submit"} disabled={!isValid}>
+          <button className={styles.button} type={"submit"}>
             Додати
           </button>
         </form>
