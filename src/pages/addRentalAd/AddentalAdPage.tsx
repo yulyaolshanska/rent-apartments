@@ -1,6 +1,7 @@
+import React from "react";
 import AddApartmentForm from "../../components/addApartmentForm/AddApartmentForm";
 
-const addRentalAdPage = () => {
+const addRentalAdPage: React.FC = () => {
   return (
     <>
       <AddApartmentForm />
