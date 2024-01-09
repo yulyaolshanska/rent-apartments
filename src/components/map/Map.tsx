@@ -22,7 +22,7 @@ const Map: React.FC<MapProps> = ({
         center={[49.0, 31.0]}
         zoom={6}
         scrollWheelZoom={false}
-        style={{ height: "100vh", width: "750px" }}
+        style={{ height: "100vh", width: "70%" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
