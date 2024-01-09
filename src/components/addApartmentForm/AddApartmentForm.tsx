@@ -9,7 +9,7 @@ import styles from "./AddApartmentForm.module.scss";
 interface FormData {
   title: string;
   description: string;
-  image: string;
+  image: any;
   type: string;
   address: string;
   price: number;
@@ -33,12 +33,15 @@ const AddApartmentForm: React.FC = () => {
   const navigate = useNavigate();
 
   const handleAddApartment = async (formData: FormData) => {
-    setValue("image", "");
     try {
-      if (typeof formData.image === "string") {
-        await axios.post(`${apiUrl}/add`, formData);
-        navigate("/");
-      }
+      console.log("FormData", formData);
+      const resp = await axios.post(
+        " http://localhost:5001/api/apartments/add",
+        formData
+      );
+      console.log("Response", resp.data);
+      // await axios.post(`${apiUrl}/add`, formData);
+      navigate("/");
     } catch (error) {
       console.error("Error adding apartment:", error);
     }
@@ -235,9 +238,9 @@ const AddApartmentForm: React.FC = () => {
                 name="image"
                 aria-invalid={errors.image ? "true" : "false"}
               />
-              {errors.image && touchedFields.image && (
+              {/* {errors.image && touchedFields.image && (
                 <p className={styles.errorMessage}>{errors.image?.message}</p>
-              )}
+              )} */}
             </li>
             <li className={styles.inputContainer}>
               <label className={styles.label} htmlFor="description">
