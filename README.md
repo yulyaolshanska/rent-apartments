@@ -1,13 +1,12 @@
-"<img width="400" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/4136a258-fc9c-4be9-b0c9-978e9bfaa6ba">
-
-
-## Easy to Re
+# Easy to Rent
 
 ## [Click to view website](https://easy-to-rent.netlify.app/)
 
-# Rent Apartments Application
+## Rent Apartments Application
 
 Rent Apartments is a web application that allows users to list and discover rental apartments. Users can view available apartments on a map, add new apartments, and more.
+
+<img width="700" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/4136a258-fc9c-4be9-b0c9-978e9bfaa6ba">
 
 ## Introduction
 
