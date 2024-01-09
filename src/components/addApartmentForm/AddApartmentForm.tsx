@@ -30,10 +30,14 @@ const AddApartmentForm: React.FC = () => {
     shouldUnregister: true,
   });
   const [isMapModalOpen, setMapModalOpen] = useState<boolean>(false);
+  const [lat, setLat] = useState<number>(0);
+  const [lng, setLng] = useState<number>(0);
+
   const navigate = useNavigate();
 
   const handleAddApartment = async (formData: FormData) => {
-    setValue("image", "");
+    formData.image = "";
+
     try {
       if (typeof formData.image === "string") {
         await axios.post(`${apiUrl}/add`, formData);
@@ -55,6 +59,8 @@ const AddApartmentForm: React.FC = () => {
   const handleSelectLocation = (lat: number, lng: number) => {
     setValue("lat", lat);
     setValue("lng", lng);
+    setLat(lat);
+    setLng(lng);
   };
 
   return (
@@ -164,6 +170,7 @@ const AddApartmentForm: React.FC = () => {
             <li>
               <input
                 type="hidden"
+                value={lat}
                 aria-invalid={errors.lat ? "true" : "false"}
                 {...register("lat", {
                   required: {
@@ -174,6 +181,7 @@ const AddApartmentForm: React.FC = () => {
               />
               <input
                 type="hidden"
+                value={lng}
                 aria-invalid={errors.lng ? "true" : "false"}
                 {...register("lng", {
                   required: {
@@ -184,7 +192,7 @@ const AddApartmentForm: React.FC = () => {
               />
               <p
                 className={`${styles.locationText} ${
-                  errors.lat ? styles.errorLocationText : ""
+                  !lat ? styles.errorLocationText : ""
                 }`}
               >
                 Обовʼязково вкажіть розташування житла на мапі!
@@ -267,7 +275,7 @@ const AddApartmentForm: React.FC = () => {
               )}
             </li>
           </ul>
-          <Button variant="formBtn" type={"submit"}>
+          <Button variant="formBtn" type="submit">
             Додати
           </Button>
         </form>
