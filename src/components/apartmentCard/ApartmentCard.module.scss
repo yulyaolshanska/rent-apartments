@@ -7,12 +7,8 @@
   &:not(:last-child) {
     margin-bottom: 14px;
   }
-
-  @media (min-width: 524px) {
-    max-width: 492px;
-  }
   @media (min-width: 768px) {
-    max-width: 600px;
+    max-width: 400px;
   }
 }
 
