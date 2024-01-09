@@ -1,8 +1,9 @@
-<img src="" width="50px">
+"<img width="400" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/4136a258-fc9c-4be9-b0c9-978e9bfaa6ba">
 
-## _EcoSolution company_
 
-## [Click to view website](https://eco-solution.netlify.app/)
+## Easy to Re
+
+## [Click to view website](https://easy-to-rent.netlify.app/)
 
 # Rent Apartments Application
 
