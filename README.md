@@ -6,7 +6,9 @@
 
 Rent Apartments is a web application that allows users to list and discover rental apartments. Users can view available apartments on a map, add new apartments, and more.
 
-<img width="700" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/4136a258-fc9c-4be9-b0c9-978e9bfaa6ba">
+<img width="600" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/4136a258-fc9c-4be9-b0c9-978e9bfaa6ba">
+<img width="600" alt="image" src="https://github.com/yulyaolshanska/rent-apartments/assets/63751946/d5aa9e66-f0bd-49cd-bbf2-3231a9fb0923">
+
 
 ## Introduction
 
