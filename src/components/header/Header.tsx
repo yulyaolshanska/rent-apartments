@@ -9,9 +9,17 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.container}>
-          <img src={logo} width={24} height={24} alt="Лого" />
           <p className={styles.homeNav}>
-            <NavLink to="/">Оголошення</NavLink>
+            <NavLink to="/">
+              <img
+                className={styles.logo}
+                src={logo}
+                width={24}
+                height={24}
+                alt="Лого"
+              />
+              Оголошення
+            </NavLink>
           </p>
           <Button variant="headerBtn">
             <Link to={"/add"}>Здати в оренду</Link>
