@@ -21,7 +21,14 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
   return (
     <li className={styles.card}>
       <h2 className={styles.title}>{title}</h2>
-      <img src={image || defaultImage} alt={title} width={300} />
+      <div>
+        <img
+          className={styles.image}
+          src={image || defaultImage}
+          alt={title}
+          width={300}
+        />
+      </div>
       <div className={styles.textContainer}>
         <p>Type: {type}</p>
         <p>Address: {address}</p>

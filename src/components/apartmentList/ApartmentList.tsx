@@ -8,19 +8,24 @@ interface ApartmentsProps {
 
 const ApartmentList: React.FC<ApartmentsProps> = ({ apartments }) => {
   return (
-    <ul className={styles.apartmentList}>
-      {apartments.map((apartment) => (
-        <ApartmentCard
-          key={apartment._id}
-          title={apartment.title}
-          description={apartment.description}
-          type={apartment.type}
-          address={apartment.address}
-          image={apartment.image}
-          price={apartment.price}
-        />
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <h2
+        className={styles.title}
+      >{`Знайдено ${apartments.length} оголошень на видимій території:`}</h2>
+      <ul className={styles.apartmentList}>
+        {apartments.map((apartment) => (
+          <ApartmentCard
+            key={apartment._id}
+            title={apartment.title}
+            description={apartment.description}
+            type={apartment.type}
+            address={apartment.address}
+            image={apartment.image}
+            price={apartment.price}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

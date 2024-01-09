@@ -1,7 +1,8 @@
 .card {
-  height: 600px;
+  height: 420px;
   box-shadow: 0px 4px 8px 0px rgba(69, 67, 67, 0.08);
   border-radius: 5px 5px;
+  list-style: none;
 
   &:not(:last-child) {
     margin-bottom: 14px;
@@ -10,6 +11,9 @@
   @media (min-width: 524px) {
     max-width: 492px;
   }
+  @media (min-width: 768px) {
+    max-width: 600px;
+  }
 }
 
 .title {
@@ -17,6 +21,12 @@
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 14px;
+}
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  max-height: 220px;
 }
 
 .textContainer {
