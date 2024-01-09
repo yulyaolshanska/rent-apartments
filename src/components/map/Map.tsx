@@ -37,7 +37,7 @@ const Map: React.FC<MapProps> = ({
               click: () => handleMarkerClick(apartment),
             }}
           >
-            <Popup>{apartment.description}</Popup>
+            <Popup>{apartment.title}</Popup>
           </Marker>
         ))}
         <LocationMarker

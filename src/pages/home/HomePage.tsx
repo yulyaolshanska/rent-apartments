@@ -8,6 +8,8 @@ import ApartmentList from "../../components/apartmentList/ApartmentList";
 import Map from "../../components/map/Map";
 import styles from "./HomePage.module.scss";
 
+const apiUrl = process.env.REACT_APP_API_URL || "";
+
 const HomePage: React.FC = () => {
   const [selectedApartment, setSelectedApartment] = useState<Apartment | null>(
     null
@@ -17,11 +19,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://rent-apartments-backend.vercel.app/api/apartments"
-          // "http://localhost:5001/api/apartments"
-        );
-        console.log("Apartments:", response.data);
+        const response = await axios.get(apiUrl);
         setApartments(response.data);
       } catch (error) {
         console.error("Error fetching apartments:", error);
@@ -52,14 +50,16 @@ const HomePage: React.FC = () => {
           handleMapClick={handleMapClick}
         />
         {selectedApartment ? (
-          <ApartmentCard
-            title={selectedApartment.title}
-            description={selectedApartment.description}
-            type={selectedApartment.type}
-            address={selectedApartment.address}
-            image={selectedApartment.image}
-            price={selectedApartment.price}
-          />
+          <div className={styles.selectedContainer}>
+            <ApartmentCard
+              title={selectedApartment.title}
+              description={selectedApartment.description}
+              type={selectedApartment.type}
+              address={selectedApartment.address}
+              image={selectedApartment.image}
+              price={selectedApartment.price}
+            />
+          </div>
         ) : (
           <ApartmentList apartments={visibleApartments} />
         )}
